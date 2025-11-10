@@ -604,6 +604,15 @@ impl Builder<'_> {
             rustflags.arg(arg);
         }
 
+        // target specific rustflags take precedence over general rustflags
+        if let Some(target_rustflags) =
+            self.config.target_config.get(&target).map(|t| &t.rustflags[..])
+        {
+            for arg in target_rustflags {
+                rustflags.arg(arg);
+            }
+        }
+
         rustflags.propagate_cargo_env("RUSTFLAGS");
 
         if build_compiler_stage != 0 {

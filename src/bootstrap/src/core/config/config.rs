@@ -856,6 +856,7 @@ impl Config {
                     sanitizers: target_sanitizers,
                     profiler: target_profiler,
                     rpath: target_rpath,
+                    rustflags: target_rustflags,
                     crt_static: target_crt_static,
                     musl_root: target_musl_root,
                     musl_libdir: target_musl_libdir,
@@ -939,6 +940,7 @@ impl Config {
                 target.sanitizers = target_sanitizers;
                 target.profiler = target_profiler;
                 target.rpath = target_rpath;
+                target.rustflags = target_rustflags.unwrap_or_default();
                 target.optimized_compiler_builtins = target_optimized_compiler_builtins;
                 target.jemalloc = target_jemalloc;
                 if let Some(backends) = target_codegen_backends {
