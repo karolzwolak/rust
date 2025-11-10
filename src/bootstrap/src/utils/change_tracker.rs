@@ -581,4 +581,9 @@ pub const CONFIG_CHANGE_HISTORY: &[ChangeInfo] = &[
         severity: ChangeSeverity::Info,
         summary: "The `build.python` option is now respected on macOS (previously ignored and forced to be /usr/bin/python3).",
     },
+    ChangeInfo {
+        change_id: 148795,
+        severity: ChangeSeverity::Info,
+        summary: "New options `rust.rustflags` for all targets and `rustflags` par target that will pass specified flags to rustc for all stages. Target specific flags override (are passed after) global `rust.rustflags` ones.",
+    },
 ];
