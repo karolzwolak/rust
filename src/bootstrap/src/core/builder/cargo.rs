@@ -601,6 +601,11 @@ impl Builder<'_> {
         }
 
         let mut rustflags = Rustflags::new(target);
+
+        for arg in &self.config.rust_rustflags {
+            rustflags.arg(arg);
+        }
+
         if build_compiler_stage != 0 {
             if let Ok(s) = env::var("CARGOFLAGS_NOT_BOOTSTRAP") {
                 cargo.args(s.split_whitespace());
