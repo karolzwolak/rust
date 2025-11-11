@@ -25,9 +25,7 @@ struct Rustflags(String, TargetSelection);
 
 impl Rustflags {
     fn new(target: TargetSelection) -> Rustflags {
-        let mut ret = Rustflags(String::new(), target);
-        ret.propagate_cargo_env("RUSTFLAGS");
-        ret
+        Rustflags(String::new(), target)
     }
 
     /// By default, cargo will pick up on various variables in the environment. However, bootstrap
@@ -605,6 +603,8 @@ impl Builder<'_> {
         for arg in &self.config.rust_rustflags {
             rustflags.arg(arg);
         }
+
+        rustflags.propagate_cargo_env("RUSTFLAGS");
 
         if build_compiler_stage != 0 {
             if let Ok(s) = env::var("CARGOFLAGS_NOT_BOOTSTRAP") {
