@@ -581,4 +581,9 @@ pub const CONFIG_CHANGE_HISTORY: &[ChangeInfo] = &[
         severity: ChangeSeverity::Info,
         summary: "The `build.python` option is now respected on macOS (previously ignored and forced to be /usr/bin/python3).",
     },
+    ChangeInfo {
+        change_id: 148911,
+        severity: ChangeSeverity::Warning,
+        summary: "Flags from `*FLAGS*` env vars now have precedence over bootstrap own flags and not the other way around.",
+    },
 ];
